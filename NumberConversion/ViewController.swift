@@ -36,18 +36,28 @@ class ViewController: UIViewController {
         let text: String? = Userinput.text
         let nonOptionalString: String = text!
         switch(typeIndex) {
-        case 0 : decimalToAll(value: val)
-        case 1 : binaryToAll(value: val)
+        case 0 : decimalToAll(value: val, text: nonOptionalString)
+        case 1 : binaryToAll(value: val, text: nonOptionalString)
         case 2 : octalToAll(value: val)
         case 3 : hexaToAll(value: nonOptionalString)
         default: return
         }
     }
-    func isNotBinaryNumber(_ number: String) -> Bool {
+    func isNotBinaryNumber(_ number: String) -> Bool
+    {
         return number.contains(where: { char in
             return char != "0" && char != "1"
         })
     }
+    func isNotDecimalNumber(_ number: String) -> Bool
+    {
+        if let _ = Double(number) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     func decimalToBinary(value:Int)
     {
         var decimalValue = value
@@ -106,8 +116,17 @@ class ViewController: UIViewController {
         HexaDecimal.text=hex
     }
     
-    func decimalToAll(value:Int)
+    func decimalToAll(value:Int,text: String)
     {
+        if(isNotDecimalNumber(text) != true)
+        {
+            Notification.text="Please enter only decimal values!"
+            return
+        }
+        else
+        {
+            Notification.text=""
+        }
         Decimal.text = String(value)
         decimalToBinary(value: value)
         decimalToOctal(value: value)
@@ -115,13 +134,16 @@ class ViewController: UIViewController {
     }
     
     
-    func binaryToAll(value:Int)
+    func binaryToAll(value:Int, text: String)
     {
-        let bin = String(value)
-        if(isNotBinaryNumber(bin) != false)
+        if(isNotBinaryNumber(text) != false)
         {
             Notification.text="Please enter only binary values!"
             return
+        }
+        else
+        {
+            Notification.text=""
         }
         var number = value
         var decimalNum = 0
