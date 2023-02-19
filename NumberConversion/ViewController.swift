@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         switch(typeIndex) {
         case 0 : decimalToAll(value: val, text: nonOptionalString)
         case 1 : binaryToAll(value: val, text: nonOptionalString)
-        case 2 : octalToAll(value: val)
+        case 2 : octalToAll(value: val, text: nonOptionalString)
         case 3 : hexaToAll(value: nonOptionalString)
         default: return
         }
@@ -56,6 +56,10 @@ class ViewController: UIViewController {
         } else {
             return false
         }
+    }
+    func isNotOctalNumber(_ str: String) -> Bool {
+        let validOctalCharacters = CharacterSet(charactersIn: "01234567")
+        return str.rangeOfCharacter(from: validOctalCharacters.inverted) != nil
     }
 
     func decimalToBinary(value:Int)
@@ -161,7 +165,16 @@ class ViewController: UIViewController {
         decimalToHexa(value: decimalNum)
     }
     
-    func octalToAll(value:Int) {
+    func octalToAll(value:Int,text: String ) {
+        if(isNotOctalNumber(text) != false)
+        {
+            Notification.text="Please enter only Octal values!"
+            return
+        }
+        else
+        {
+            Notification.text=""
+        }
         Octal.text = String(value)
         let a: Int = value
         
