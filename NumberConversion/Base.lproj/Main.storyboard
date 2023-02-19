@@ -105,13 +105,6 @@
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <color key="highlightedColor" systemColor="labelColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIi-o1-PNs">
-                                <rect key="frame" x="177" y="159" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jwu-rk-Bgt">
                                 <rect key="frame" x="23" y="731" width="346" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -139,7 +132,6 @@
                         <outlet property="Decimal" destination="owH-p5-WDe" id="bni-xW-gu9"/>
                         <outlet property="HexaDecimal" destination="9rs-eV-1dY" id="jER-S4-ZBj"/>
                         <outlet property="Octal" destination="PgQ-9M-8tf" id="vT8-Ug-7Mt"/>
-                        <outlet property="TextBoxLabel" destination="xIi-o1-PNs" id="Fcj-gp-PpC"/>
                         <outlet property="Userinput" destination="6bX-tf-b53" id="Hh9-SS-r3e"/>
                         <outlet property="numberFormat" destination="jwu-rk-Bgt" id="r4N-2i-i2G"/>
                     </connections>
