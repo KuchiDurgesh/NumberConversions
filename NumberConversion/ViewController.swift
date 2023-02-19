@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  NumberConversion
 //
-//  Created by Durge K on 2/17/23.
+//  Created by Durge K on 2/11/23.
 //
 
 import UIKit
@@ -41,28 +41,13 @@ class ViewController: UIViewController {
         default: return
         }
     }
-    
-    func decimalToAll(value:Int) {
-        var number = value
-        Decimal.text = String(value)
-        
-        
-        var octalNumber = 0
-        var count = 1
-        
-        while(number != 0) {
-            
-            let rem = number % 8
-            
-            octalNumber += rem * count
-            
-            count = count * 10
-            number /= 8
-            
-        }
-        
-        Octal.text = String(octalNumber)
-        
+    func isNotBinaryNumber(_ number: String) -> Bool {
+        return number.contains(where: { char in
+            return char != "0" && char != "1"
+        })
+    }
+    func decimalToBinary(value:Int)
+    {
         var decimalValue = value
         var binaryValue = ""
         while(decimalValue > 0) {
@@ -82,7 +67,31 @@ class ViewController: UIViewController {
         let res = String(binaryValue.reversed())
         
         Binary.text = String(res)
+    }
+    func decimalToOctal(value:Int)
+    {
+        var number = value
+        Decimal.text = String(value)
         
+        
+        var octalNumber = 0
+        var count = 1
+        
+        while(number != 0) {
+            
+            let rem = number % 8
+            
+            octalNumber += rem * count
+            
+            count = count * 10
+            number /= 8
+            
+        }
+        
+        Octal.text = String(octalNumber)
+    }
+    func decimalToHexa(value:Int)
+    {
         var decimal = value
         var rem: Int
         var hex = ""
@@ -95,8 +104,18 @@ class ViewController: UIViewController {
         HexaDecimal.text=hex
     }
     
+    func decimalToAll(value:Int)
+    {
+        Decimal.text = String(value)
+        decimalToBinary(value: value)
+        decimalToOctal(value: value)
+        decimalToHexa(value: value)
+    }
     
-    func binaryToAll(value:Int) {
+    
+    func binaryToAll(value:Int)
+    {
+        
         var number = value
         var decimalNum = 0
         var baseVal = 1
@@ -109,32 +128,8 @@ class ViewController: UIViewController {
             baseVal *= 2
         }
         Decimal.text = String(decimalNum)
-   
-        var decimal = decimalNum
-        var octalNumber = 0
-        var count = 1
-        
-        while(decimalNum != 0) {
-            
-            let rem = decimalNum % 8
-            
-            octalNumber += rem * count
-            
-            count = count * 10
-            decimalNum /= 8
-            
-        }
-        
-        Octal.text = String(octalNumber)
-        var rem: Int
-        var hex = ""
-        let hexchars: [Character] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
-        while decimal > 0 {
-            rem = decimal % 16
-            hex = String(hexchars[rem]) + hex
-            decimal /= 16
-        }
-        HexaDecimal.text=hex
+        decimalToOctal(value: decimalNum)
+        decimalToHexa(value: decimalNum)
     }
     
     func octalToAll(value:Int) {
@@ -162,38 +157,12 @@ class ViewController: UIViewController {
             i += 1
         }
         Decimal.text = String(result)
-        var decimalValue = result
-        var binaryValue = ""
-        while(decimalValue > 0) {
-            
-            if ((decimalValue & 1) == 1){
-                
-                binaryValue += "1"
-            }
-            else {
-                
-                binaryValue += "0"
-            }
-            
-            decimalValue >>= 1
-        }
-        
-        let res = String(binaryValue.reversed())
-        
-        Binary.text = String(res)
-        var decimal = result
-        var rem: Int
-        var hex = ""
-        let hexchars: [Character] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
-        while decimal > 0 {
-            rem = decimal % 16
-            hex = String(hexchars[rem]) + hex
-            decimal /= 16
-        }
-        HexaDecimal.text=hex
+        decimalToHexa(value: result)
+        decimalToBinary(value: result)
     }
     
-    func hexaToAll(value: String) {
+    func hexaToAll(value: String)
+    {
         let hexVal = value.capitalized
         HexaDecimal.text=String(hexVal)
         var len = hexVal.count
@@ -222,40 +191,8 @@ class ViewController: UIViewController {
             }
         }
         Decimal.text = String(dec_val)
-        var decimalValue = dec_val
-        var octalNumber = 0
-        var count = 1
-        
-        while(dec_val != 0) {
-            
-            let rem = dec_val % 8
-            
-            octalNumber += rem * count
-            
-            count = count * 10
-            dec_val /= 8
-            
-        }
-        
-        Octal.text = String(octalNumber)
-        var binaryValue = ""
-        while(decimalValue > 0) {
-            
-            if ((decimalValue & 1) == 1){
-                
-                binaryValue += "1"
-            }
-            else {
-                
-                binaryValue += "0"
-            }
-            
-            decimalValue >>= 1
-        }
-        
-        let res = String(binaryValue.reversed())
-        
-        Binary.text = String(res)
+        decimalToOctal(value: dec_val)
+        decimalToBinary(value: dec_val)
     }
 }
         
