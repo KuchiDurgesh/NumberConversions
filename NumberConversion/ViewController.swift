@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         case 0 : decimalToAll(value: val, text: nonOptionalString)
         case 1 : binaryToAll(value: val, text: nonOptionalString)
         case 2 : octalToAll(value: val, text: nonOptionalString)
-        case 3 : hexaToAll(value: nonOptionalString)
+        case 3 : hexaToAll(value: nonOptionalString, text: nonOptionalString)
         default: return
         }
     }
@@ -61,7 +61,18 @@ class ViewController: UIViewController {
         let validOctalCharacters = CharacterSet(charactersIn: "01234567")
         return str.rangeOfCharacter(from: validOctalCharacters.inverted) != nil
     }
-
+    
+    func isNotHexadecimalNumber(_ input: String) -> Bool {
+        let validHexadecimalCharacters = CharacterSet(charactersIn: "0123456789abcdefABCDEF")
+        return input.rangeOfCharacter(from: validHexadecimalCharacters.inverted) != nil
+    }
+    func clearScr() {
+        Decimal.text=""
+        Binary.text=""
+        Octal.text=""
+        HexaDecimal.text=""
+    }
+    
     func decimalToBinary(value:Int)
     {
         var decimalValue = value
@@ -125,6 +136,7 @@ class ViewController: UIViewController {
         if(isNotDecimalNumber(text) != true)
         {
             Notification.text="Please enter only decimal values!"
+            clearScr()
             return
         }
         else
@@ -143,6 +155,7 @@ class ViewController: UIViewController {
         if(isNotBinaryNumber(text) != false)
         {
             Notification.text="Please enter only binary values!"
+            clearScr()
             return
         }
         else
@@ -169,6 +182,7 @@ class ViewController: UIViewController {
         if(isNotOctalNumber(text) != false)
         {
             Notification.text="Please enter only Octal values!"
+            clearScr()
             return
         }
         else
@@ -203,8 +217,18 @@ class ViewController: UIViewController {
         decimalToBinary(value: result)
     }
     
-    func hexaToAll(value: String)
+    func hexaToAll(value: String,text: String)
     {
+        if(isNotHexadecimalNumber(text) != false)
+        {
+            Notification.text="Please enter only Octal values!"
+            clearScr()
+            return
+        }
+        else
+        {
+            Notification.text=""
+        }
         let hexVal = value.capitalized
         HexaDecimal.text=String(hexVal)
         let len = hexVal.count
