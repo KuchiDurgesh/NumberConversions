@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBOutlet weak var Notification: UILabel!
     @IBOutlet weak var Decimal: UILabel!
     @IBOutlet weak var Binary: UILabel!
     @IBOutlet weak var TextBoxLabel: UILabel!
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
         Binary.text=""
         Octal.text=""
         HexaDecimal.text=""
+        Notification.text=""
     }
     @IBAction func convert(_ sender: Any) {
         let typeIndex = numberFormat.selectedSegmentIndex
@@ -115,7 +117,12 @@ class ViewController: UIViewController {
     
     func binaryToAll(value:Int)
     {
-        
+        let bin = String(value)
+        if(isNotBinaryNumber(bin) != false)
+        {
+            Notification.text="Please enter only binary values!"
+            return
+        }
         var number = value
         var decimalNum = 0
         var baseVal = 1
@@ -165,7 +172,7 @@ class ViewController: UIViewController {
     {
         let hexVal = value.capitalized
         HexaDecimal.text=String(hexVal)
-        var len = hexVal.count
+        let len = hexVal.count
         
         // Initializing base value to 1, i.e 16^0
         var base = 1

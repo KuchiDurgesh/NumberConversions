@@ -123,6 +123,13 @@
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to MAD Ass-1 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTy-Kf-Tb8">
+                                <rect key="frame" x="73" y="260" width="257" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemPurpleColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -131,6 +138,7 @@
                         <outlet property="Binary" destination="NRe-gy-Mta" id="Ai6-9z-UDS"/>
                         <outlet property="Decimal" destination="owH-p5-WDe" id="bni-xW-gu9"/>
                         <outlet property="HexaDecimal" destination="9rs-eV-1dY" id="jER-S4-ZBj"/>
+                        <outlet property="Notification" destination="lTy-Kf-Tb8" id="neM-yA-ono"/>
                         <outlet property="Octal" destination="PgQ-9M-8tf" id="vT8-Ug-7Mt"/>
                         <outlet property="Userinput" destination="6bX-tf-b53" id="Hh9-SS-r3e"/>
                         <outlet property="numberFormat" destination="jwu-rk-Bgt" id="r4N-2i-i2G"/>
@@ -147,6 +155,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
