@@ -221,7 +221,7 @@ class ViewController: UIViewController {
     {
         if(isNotHexadecimalNumber(text) != false)
         {
-            Notification.text="Please enter only Octal values!"
+            Notification.text="Please enter only Hexa values!"
             clearScr()
             return
         }
